@@ -12,22 +12,18 @@ namespace TP__4
         private String domicilio;
         private long telefono;
         private String email;
-        private ActividadAutorizada actividad;
+        private DateTime fechaAutorizacion;
+        private Empresa empresa;
 
         public string NombreApellido { get => nombreApellido; set => nombreApellido = value; }
-
         public string Domicilio { get => domicilio; set => domicilio = value; }
         public long Telefono { get => telefono; set => telefono = value; }
         public string Email { get => email; set => email = value; }
-        internal ActividadAutorizada Actividad { get => actividad; set => actividad = value; }
         public Int32 Dni { get => dni; set => dni = value; }
+        public DateTime FechaAutorizacion { get => fechaAutorizacion; set => fechaAutorizacion = value; }
+        internal Empresa Empresa { get => empresa; set => empresa = value; }
 
-        public Persona(ActividadAutorizada actividad)
-        {
-            this.actividad = actividad;
-        }
-
-        public void RegistrarPersona()
+        public void RegistroPersona()
         {
             string linea;
 
@@ -47,13 +43,7 @@ namespace TP__4
 
             Console.Write("Ingrese el email de la persona: ");
             email = Console.ReadLine();
-
-            Console.WriteLine("Ingrese la actividad que realiza la persona\n");
-            actividad.ListaActividades();
-
-            Console.WriteLine("\n");
         }
-
 
         public void ToStringPersona()
         {
@@ -62,18 +52,9 @@ namespace TP__4
             Console.WriteLine("Domicilio: " + domicilio);
             Console.WriteLine("Telefono: " + telefono);
             Console.WriteLine("Email: " + email);
-            Console.WriteLine("Actividad: " + actividad.Nombre);
-
-            if (Actividad.Autorizacion == true)
-            {
-                Console.WriteLine("Persona autorizada para circular.");
-
-            }
-
-            else
-            {
-                Console.WriteLine("Persona no autorizada para circular.");
-            }
+            Console.WriteLine("Empresa: " + empresa.RazonSocial);
+            Console.WriteLine("Fecha de autorizacion: " + fechaAutorizacion.ToShortDateString());
+            Console.WriteLine("\n");
         }
     }
 }
