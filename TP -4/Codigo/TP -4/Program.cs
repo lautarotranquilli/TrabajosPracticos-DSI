@@ -6,21 +6,27 @@ namespace TP__4
 {
     class Program
     {
+
         static RegEmpresas empresasRegistradas = new RegEmpresas();
         static RegPersonas personasRegistradas = new RegPersonas();
+        static RegPersonas personasIngresadas = new RegPersonas();
 
         static void Main(string[] args)
         {
+
             int op;
             string linea;
 
+            Console.WriteLine("\t---BIENVENIDOS---");
+
             do
             {
-                Console.WriteLine("Ingrese la operacion a realizar: ");
+                Console.WriteLine("\nIngrese la operacion a realizar: ");
                 Console.WriteLine("1. Registrar persona.");
                 Console.WriteLine("2. Autorizar ingreso.");
-                Console.WriteLine("3. Dar de baja empleado.");
-                Console.WriteLine("4. Finalizar.");
+                Console.WriteLine("3. Registrar salida.");
+                Console.WriteLine("4. Dar de baja empleado.");
+                Console.WriteLine("5. Finalizar.");
                 Console.WriteLine("");
                 linea = Console.ReadLine();
                 op = int.Parse(linea);
@@ -36,12 +42,17 @@ namespace TP__4
                         break;
 
                     case 3:
-                        BajaEmpleado();
+                        RegistrarSalida();
                         break;
 
                     case 4:
+                        RegistrarBajaEmpleado();
+                        break;
+
+                    case 5:
                         //empresasRegistradas.MuestreoEmpresas();
                         //personasRegistradas.MuestreoPersonas();
+                        //personasIngresadas.MuestreoPersonasIng();
                         //Lo anterior es para corroborar que se cargo todo bien.
                         Console.WriteLine("\nPrograma finalizado - Muchas gracias!");
                         break;
@@ -51,7 +62,7 @@ namespace TP__4
                         break;
 
                 }
-            } while (op != 4);
+            } while (op != 5);
 
 
         }
@@ -214,26 +225,43 @@ namespace TP__4
                     break;
             }
 
-            //empresasRegistradas.MuestreoEmpresas();
-            //personasRegistradas.MuestreoPersonas();
-
         }
 
         static public void AutorizarIngreso()
         {
+
             if (personasRegistradas.CantidadPersonas() > 0)
             {
-                personasRegistradas.AutorizacionIngreso();
+                var personaAutorizada = new Persona();
+
+                DateTime fechaIngreso = new DateTime();
+                fechaIngreso = DateTime.Now;
+                Console.WriteLine("\nFecha de ingreso: " + fechaIngreso + "\n");
+
+                personasRegistradas.AutorizacionIngreso(personaAutorizada);
             }
 
             else
             {
                 Console.WriteLine("No hay ninguna persona ingresada, por favor ingrese nuevamente!\n");
             }
-            
         }
 
-        static public void BajaEmpleado()
+        static public void RegistrarSalida()
+        {
+
+            if (personasIngresadas.CantidadPersonasIng() > 0)
+            {
+                personasIngresadas.EgresoPersona();
+            }
+
+            else
+            {
+                Console.WriteLine("No hay ninguna persona ingresada, por favor ingrese nuevamente!\n");
+            }
+        }
+
+        static public void RegistrarBajaEmpleado()
         {
 
             if (personasRegistradas.CantidadPersonas() > 0)

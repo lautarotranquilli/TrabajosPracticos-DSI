@@ -7,9 +7,9 @@ namespace TP__4
 {
     class RegEmpresas
     {
-        private List<Empresa> empresasRegistradas = new List<Empresa>();
+        private static List<Empresa> empresasRegistradas = new List<Empresa>();
 
-        internal List<Empresa> EmpresasRegistradas { get => empresasRegistradas; set => empresasRegistradas = value; }
+        internal static List<Empresa> EmpresasRegistradas { get => empresasRegistradas; set => empresasRegistradas = value; }
 
         public void RegistrarEmpresa(Empresa empresa)
         {
