@@ -236,7 +236,7 @@ namespace TP__4
 
                 DateTime fechaIngreso = new DateTime();
                 fechaIngreso = DateTime.Now;
-                Console.WriteLine("\nFecha de ingreso: " + fechaIngreso + "\n");
+                Console.WriteLine("\nFecha y hora de ingreso: " + fechaIngreso + "\n");
 
                 personasRegistradas.AutorizacionIngreso(personaAutorizada);
             }

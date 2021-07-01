@@ -148,14 +148,12 @@ namespace TP__4
 
                 else
                 {
-
                     personasIngresadas.Add(personaAutorizadaOrden);
 
                     Console.WriteLine("\nSu temperatura es aceptada! PUEDE INGRESAR.");
 
                     Console.Write("\nLugar hacia donde se dirige: ");
                     string lugar = Console.ReadLine();
-
                 }
 
                 //Genero el codigo QR
@@ -166,7 +164,6 @@ namespace TP__4
                 qrcodeWriter.Write("Autorizado").Save(@"C:\Users\lauti\Downloads\Autorizacion.jpg");
 
                 Console.WriteLine("\nEl codigo QR fue generado!");
-
             }
 
 
@@ -186,8 +183,7 @@ namespace TP__4
 
                     else
                     {
-                        Console.WriteLine("\nLa persona no existe.\n");
-                        
+                        Console.WriteLine("\nLa persona no existe.\n");                       
                     }
                 }
             }
@@ -229,8 +225,8 @@ namespace TP__4
                 personaRetiro.ToStringPersona();
 
                 DateTime fechaSalida = new DateTime();
-                fechaSalida = DateTime.Now;
-                Console.WriteLine("Fecha de salida: " + fechaSalida + "\n");
+                fechaSalida = DateTime.Now.AddHours(1);
+                Console.WriteLine("Fecha y hora de salida: " + fechaSalida + "\n");
 
                 personasIngresadas.Remove(personaRetiro);
             }
@@ -246,7 +242,7 @@ namespace TP__4
 
         public void DarDeBaja()
         {
-            Console.Write("\tBAJA DE PERSONA");
+            Console.Write("\tBAJA DE EMPLEADO");
 
             Int32 dniEliminar;
             string linea;
@@ -272,12 +268,12 @@ namespace TP__4
             {
                 personasRegistradas.Remove(bajaPersona);
 
-                Console.WriteLine("Empleado fue dado de baja con exito!");
+                Console.WriteLine("\nEmpleado fue dado de baja con exito!");
             }
 
             else
             {
-                Console.WriteLine("Empleado NO existe.");
+                Console.WriteLine("\nEmpleado NO existe.");
             }
 
         }
