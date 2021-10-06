@@ -1,0 +1,3 @@
+El usuario tiene diferentes métodos de pago, queremos que pueda usar los más comunes en Argentina. 
+Algunos usuarios quieren recibir los mates en su casa y otros los quieren ir a buscar.
+El usuario quiere tener una constancia de que su pago se recibió.
