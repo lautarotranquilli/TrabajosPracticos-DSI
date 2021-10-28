@@ -22,6 +22,7 @@ namespace TP_Integrador___Team_4
             this.monto = monto;
             this.fecha = fecha;
             this.pagado = pagado;
+
         }
     }
 }

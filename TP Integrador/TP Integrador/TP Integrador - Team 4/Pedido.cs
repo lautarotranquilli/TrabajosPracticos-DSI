@@ -68,7 +68,6 @@ namespace TP_Integrador___Team_4
                 {
                     pago.ToStringPagoTarjetaCredito(montoFinal * 1.15M);
                 }
-
             }
         }
     }

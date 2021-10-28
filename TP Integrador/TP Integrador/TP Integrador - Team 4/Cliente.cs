@@ -48,19 +48,16 @@ namespace TP_Integrador___Team_4
 
         public void AgregarDomicilio(Domicilio domicilio)
         {
-
             domicilios.Add(domicilio);
         }
 
         public void AgregarTarjeta(Tarjeta tarjeta)
         {
-
             tarjetas.Add(tarjeta);
         }
 
         public void AgregarPedido(Pedido pedido)
         {
-
             pedidos.Add(pedido);
         }
 

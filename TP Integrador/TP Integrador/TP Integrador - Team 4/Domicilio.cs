@@ -53,8 +53,9 @@ namespace TP_Integrador___Team_4
             Cliente clienteNuevo = new Cliente();
             clienteNuevo.NuevoCliente();
             clientes = clienteNuevo;
-        }
 
+        }
+        
         public void ToStringDomicilio()
         {
             Console.WriteLine("\nCalle: " + calle);

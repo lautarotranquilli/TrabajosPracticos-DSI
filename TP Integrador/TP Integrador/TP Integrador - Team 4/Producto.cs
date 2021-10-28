@@ -28,6 +28,7 @@ namespace TP_Integrador___Team_4
             Console.WriteLine("\nNombre: " + nombre);
             Console.WriteLine("Descripcion: " + descripcion);
             Console.WriteLine("Precio: " + precio);
+
         }
     }
 }

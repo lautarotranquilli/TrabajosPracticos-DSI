@@ -71,6 +71,7 @@ namespace TP_Integrador___Team_4
 
             Console.WriteLine("\nNombre de quien recibe: " + nombreRecibe);
             Console.WriteLine("\nDni de quien recibe: " + dniRecibe);
+
         }
     }
     

@@ -95,6 +95,7 @@ namespace TP_Integrador___Team_4
                     Console.WriteLine("Opcion incorrecta, ingrese nuevamente.");
                 }
 
+
             } while (tipos != 1 && tipos != 2);
         }
 

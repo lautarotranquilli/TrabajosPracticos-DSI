@@ -42,6 +42,7 @@ namespace TP_Integrador___Team_4
             Console.WriteLine("\nCiudad: " + ciudad);
             Console.WriteLine("\nProvincia: " + provincia);
             Console.WriteLine("\nTelefono: " + telefono);
+
         }
     }
 }

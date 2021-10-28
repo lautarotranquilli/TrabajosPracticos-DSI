@@ -131,7 +131,7 @@ namespace TP_Integrador___Team_4
         public void ToStringPagoTarjetaCredito(decimal montoTotal)
         {
             Console.WriteLine("\n\t---DETALLE DEL PAGO---\n");
-
+            
             if (cuotas.Count == 1)
             {
                 Console.WriteLine("El monto es: 1 cuota de $" + monto);
@@ -154,6 +154,7 @@ namespace TP_Integrador___Team_4
             Console.WriteLine("El monto total a pagar es: " + montoTotal);
             Console.WriteLine("\t\nTarjeta utilizada");
             tarjetas.ToStringTarjeta();
+
         }
     }
 }
