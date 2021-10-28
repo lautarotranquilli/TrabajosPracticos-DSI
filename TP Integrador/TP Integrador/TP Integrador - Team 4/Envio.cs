@@ -56,6 +56,7 @@ namespace TP_Integrador___Team_4
             Console.WriteLine("\t---DETALLE DEL ENVIO---\n");
             Console.WriteLine("Fecha de salida: " + fechaSalida.ToString("g"));
             Console.WriteLine("Fecha de llegada: " + fechaLlegada.ToString("g"));
+
             if (forma == MetodoEnvio.Domicilio)
             {
                 Console.WriteLine("\n\tDomicilio");
@@ -67,6 +68,7 @@ namespace TP_Integrador___Team_4
                 Console.WriteLine("\n\tCorreo");
                 correo.ToStringCorreo();
             }
+
             Console.WriteLine("\nNombre de quien recibe: " + nombreRecibe);
             Console.WriteLine("\nDni de quien recibe: " + dniRecibe);
         }

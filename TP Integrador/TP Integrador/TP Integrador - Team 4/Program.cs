@@ -53,7 +53,7 @@ namespace TP_Integrador___Team_4
         {
             int opcionPago;
             string linea;
-            decimal total = 0;
+            decimal total = 0M;
 
             DateTime vencimiento1 = new DateTime(2023, 12, 20);
             DateTime vencimiento2 = new DateTime(2024, 08, 12);
@@ -62,8 +62,8 @@ namespace TP_Integrador___Team_4
             Cliente cliente1 = new Cliente("Lautaro Tranquilli", "42000111");
             Cliente cliente2 = new Cliente("Maria Casas", "22159753");
 
-            Producto producto1 = new Producto("Mate120", "Mate de vidrio", 2520);
-            Producto producto2 = new Producto("Mate360", "Mate de madera", 1260);
+            Producto producto1 = new Producto("Mate120", "Mate de vidrio", 2520.0M);
+            Producto producto2 = new Producto("Mate360", "Mate de madera", 1260.0M);
 
             total = producto1.Precio + producto2.Precio;
 
@@ -86,17 +86,18 @@ namespace TP_Integrador___Team_4
                 switch (opcionPago)
                 {
                     case 1:
-                        Pago pagoEfectivo = new Pago(total, fechaPedido, null, 111333555);
+                        Pago pagoEfectivo = new Pago(total, fechaPedido, null);
                         Cliente cliente3 = new Cliente("Nicolas Martinez", "35850255");
 
                         pagoEfectivo.PagoEnEfectivo();
-                        pagoEfectivo.ToStringPagoEnEfectivo();
 
-                        SeleccionarMetodoDeEnvio(pedido,cliente3);
+                        SeleccionarMetodoDeEnvio(pedido,cliente3,pagoEfectivo);
+
                         break;
 
                     case 2:
                         int opcion;
+
                         Tarjeta tarjeta1 = new Tarjeta("123456789", "Lautaro Tranquilli", 42000111, "Santander Rio", vencimiento1, 123, TipoTarjeta.Debito, cliente1);
                         cliente1.AgregarTarjeta(tarjeta1);
 
@@ -111,13 +112,25 @@ namespace TP_Integrador___Team_4
 
                             if (opcion == 1)
                             {
-                                SeleccionarMetodoDeEnvio(pedido,cliente1);
+                                Pago pagoConDebito = new Pago(total,fechaPedido,tarjeta1);
+
+                                pagoConDebito.PagoTarjetaDebito();
+                                
+                                SeleccionarMetodoDeEnvio(pedido,cliente1,pagoConDebito);
                             }
 
                             else if (opcion == 2)
                             {
-                                tarjeta1.NuevaTarjeta();
-                                SeleccionarMetodoDeEnvio(pedido,cliente1);
+                                Cliente clienteNuevo = new Cliente();
+                                Tarjeta tarjetaNueva = new Tarjeta(clienteNuevo);
+
+                                tarjetaNueva.NuevaTarjeta();
+
+                                Pago pagoTarjetaNueva = new Pago(total, fechaPedido, tarjetaNueva);
+
+                                pagoTarjetaNueva.PagoTarjetaDebito();
+
+                                SeleccionarMetodoDeEnvio(pedido,clienteNuevo,pagoTarjetaNueva);
                             }
 
                             else
@@ -144,13 +157,25 @@ namespace TP_Integrador___Team_4
 
                             if (opcion == 1)
                             {
-                                SeleccionarMetodoDeEnvio(pedido,cliente2);
+                                Pago pagoConCredito = new Pago(total, fechaPedido, tarjeta2);
+
+                                pagoConCredito.PagoTarjetaCredito();
+
+                                SeleccionarMetodoDeEnvio(pedido,cliente2,pagoConCredito);
                             }
 
                             else if (opcion == 2)
                             {
-                                tarjeta2.NuevaTarjeta();
-                                SeleccionarMetodoDeEnvio(pedido,cliente2);
+                                Cliente clienteNuevo = new Cliente();
+                                Tarjeta tarjetaNueva = new Tarjeta(clienteNuevo);
+
+                                tarjetaNueva.NuevaTarjeta();
+
+                                Pago pagoTarjetaNueva = new Pago(total, fechaPedido, tarjetaNueva);
+
+                                pagoTarjetaNueva.PagoTarjetaCredito();
+
+                                SeleccionarMetodoDeEnvio(pedido,clienteNuevo,pagoTarjetaNueva);
                             }
 
                             else
@@ -176,7 +201,7 @@ namespace TP_Integrador___Team_4
 
         }
 
-        public static void SeleccionarMetodoDeEnvio(Pedido pedido, Cliente cliente)
+        public static void SeleccionarMetodoDeEnvio(Pedido pedido, Cliente cliente, Pago pago)
         {
             Envio envio = new Envio();
 
@@ -200,9 +225,11 @@ namespace TP_Integrador___Team_4
                     case 1:
                         Cliente clienteNuevo = new Cliente();
                         Domicilio domicilio = new Domicilio();
+
                         domicilio.NuevoDomicilio();
                         clienteNuevo.AgregarDomicilio(domicilio);
                         envio.EnvioADomicilio(domicilio);
+
                         break;
 
                     case 2:
@@ -256,7 +283,7 @@ namespace TP_Integrador___Team_4
             envio.RecibeEnvio();
             cliente.AgregarPedido(pedido);
             envio.ToStringEnvio();
-            pedido.ToStringPedido(cliente, productos);
+            pedido.ToStringPedido(cliente, productos, pago);
         }
 
         static Pedido DeserializarCarritoDTO()

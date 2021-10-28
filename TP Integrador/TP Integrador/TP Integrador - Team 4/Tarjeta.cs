@@ -26,6 +26,11 @@ namespace TP_Integrador___Team_4
         public TipoTarjeta Tipo { get => tipo; set => tipo = value; }
         public List<Pago> Pagos { get => pagos; set => pagos = value; }
 
+        public Tarjeta(Cliente clientes)
+        {
+            this.clientes = clientes;
+        }
+
         public Tarjeta(string numero, string titular, int dniTitular, string banco, DateTime vencimiento, int codSeguridad, TipoTarjeta tipo, Cliente cliente)
         {
             Numero = numero;
@@ -40,7 +45,6 @@ namespace TP_Integrador___Team_4
 
         public void NuevaTarjeta()
         {
-
             Console.WriteLine("Ingrese el numero de la tarjeta: ");
             Numero = Console.ReadLine();
 
@@ -53,8 +57,13 @@ namespace TP_Integrador___Team_4
             Console.WriteLine("\nIngrese el nombre del banco: ");
             Banco = Console.ReadLine();
 
-            Console.WriteLine("\nIngrese el vencimiento de la tarjeta: ");
-            Vencimiento = DateTime.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("\nIngrese el vencimiento de la tarjeta: ");
+                Vencimiento = DateTime.Parse(Console.ReadLine());
+
+            } while (DateTime.Now > Vencimiento); //Verificar que la tarjeta no esté vencida.
+            
 
             Console.WriteLine("\nIngrese el codigo de seguridad de la tarjeta: ");
             CodSeguridad = int.Parse(Console.ReadLine());
@@ -63,6 +72,7 @@ namespace TP_Integrador___Team_4
             Clientes.NuevoCliente();
 
             int tipos;
+
             do
             {
                 Console.WriteLine("Ingrese el tipo de tarjeta: ");
@@ -86,7 +96,6 @@ namespace TP_Integrador___Team_4
                 }
 
             } while (tipos != 1 && tipos != 2);
-
         }
 
         public void ToStringTarjeta()

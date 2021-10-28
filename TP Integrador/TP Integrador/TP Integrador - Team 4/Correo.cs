@@ -27,13 +27,12 @@ namespace TP_Integrador___Team_4
             this.ciudad = ciudad;
             this.provincia = provincia;
             this.telefono = telefono;
+            this.envios = new List<Envio>();
         }
 
         public void AgregarEnvio(Envio envio)
         {
-            List<Envio> ListaEnvios = new List<Envio>();
-
-            ListaEnvios.Add(envio);
+            envios.Add(envio);
         }
 
         public void ToStringCorreo()

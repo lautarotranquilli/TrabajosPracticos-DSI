@@ -23,13 +23,18 @@ namespace TP_Integrador___Team_4
 
         public Cliente()
         {
-
+            this.tarjetas = new List<Tarjeta>();
+            this.pedidos = new List<Pedido>();
+            this.domicilios = new List<Domicilio>();
         }
 
         public Cliente(string nombre, string dni)
         {
             this.nombre = nombre;
             this.dni = dni;
+            this.tarjetas = new List<Tarjeta>();
+            this.pedidos = new List<Pedido>();
+            this.domicilios = new List<Domicilio>();
         }
 
         public void NuevoCliente()
@@ -43,23 +48,20 @@ namespace TP_Integrador___Team_4
 
         public void AgregarDomicilio(Domicilio domicilio)
         {
-            List<Domicilio> ListaDomicilios = new List<Domicilio>();
 
-            ListaDomicilios.Add(domicilio);
+            domicilios.Add(domicilio);
         }
 
         public void AgregarTarjeta(Tarjeta tarjeta)
         {
-            List<Tarjeta> ListaTarjetas = new List<Tarjeta>();
 
-            ListaTarjetas.Add(tarjeta);
+            tarjetas.Add(tarjeta);
         }
 
         public void AgregarPedido(Pedido pedido)
         {
-            List<Pedido> ListaPedidos = new List<Pedido>();
 
-            ListaPedidos.Add(pedido);
+            pedidos.Add(pedido);
         }
 
         public void ToStringCliente()
