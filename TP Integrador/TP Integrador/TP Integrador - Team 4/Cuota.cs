@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP_Integrador___Team_4
 {
-    class Cuota
+    public class Cuota
     {
         private decimal monto;
         private DateTime fecha;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP_Integrador___Team_4
 {
-    class Pedido
+    public class Pedido
     {
         private decimal montoFinal;
         private DateTime fecha;
@@ -16,7 +16,7 @@ namespace TP_Integrador___Team_4
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public Cliente Clientes { get => clientes; set => clientes = value; }
         public List<Producto> Productos { get => productos; set => productos = value; }
-        internal Pago Pagos { get => pagos; set => pagos = value; }
+        public Pago Pagos { get => pagos; set => pagos = value; }
 
         public Pedido(decimal montoFinal, DateTime fecha)
         {

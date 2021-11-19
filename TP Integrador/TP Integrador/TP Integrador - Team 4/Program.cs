@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace TP_Integrador___Team_4
 {
-    class Program
+    public class Program
     {
         static List<Producto> productos = new List<Producto>();
 
@@ -59,11 +59,11 @@ namespace TP_Integrador___Team_4
             DateTime vencimiento2 = new DateTime(2024, 08, 12);
             DateTime fechaPedido = DateTime.Now;
 
-            Cliente cliente1 = new Cliente("Lautaro Tranquilli", "42000111");
-            Cliente cliente2 = new Cliente("Maria Casas", "22159753");
+            Cliente cliente1 = new Cliente("Lautaro Tranquilli", "42000111", "Cordoba");
+            Cliente cliente2 = new Cliente("Maria Casas", "22159753", "Santa Fe");
 
             Producto producto1 = new Producto("Mate120", "Mate de vidrio", 2520.0M);
-            Producto producto2 = new Producto("Mate360", "Mate de madera", 1260.0M);
+            Producto producto2 = new Producto("Mate360", "Mate de madera", 7260.0M);
 
             total = producto1.Precio + producto2.Precio;
 
@@ -87,7 +87,7 @@ namespace TP_Integrador___Team_4
                 {
                     case 1:
                         Pago pagoEfectivo = new Pago(total, fechaPedido, null);
-                        Cliente cliente3 = new Cliente("Nicolas Martinez", "35850255");
+                        Cliente cliente3 = new Cliente("Nicolas Martinez", "35850255", "Cordoba");
 
                         pagoEfectivo.PagoEnEfectivo();
 
@@ -206,6 +206,7 @@ namespace TP_Integrador___Team_4
             Envio envio = new Envio();
 
             envio.NuevoEnvio();
+            envio.PromocionesEnvio();
 
             string linea;
             int opcionEnvio;
@@ -229,6 +230,7 @@ namespace TP_Integrador___Team_4
                         domicilio.NuevoDomicilio();
                         clienteNuevo.AgregarDomicilio(domicilio);
                         envio.EnvioADomicilio(domicilio);
+                        
 
                         break;
 

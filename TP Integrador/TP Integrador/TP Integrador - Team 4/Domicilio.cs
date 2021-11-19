@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP_Integrador___Team_4
 {
-    class Domicilio
+    public class Domicilio
     {
         private String calle;
         private int numero;

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP_Integrador___Team_4
 {
-    class Correo
+    public class Correo
     {
         private String nombre;
         private String domicilio;

@@ -4,23 +4,25 @@ using System.Text;
 
 namespace TP_Integrador___Team_4
 {
-    class Envio
+    public class Envio
     {
         private DateTime fechaSalida;
         private DateTime fechaLlegada;
-        private MetodoEnvio forma;
+        internal MetodoEnvio forma;
         private Domicilio domicilio;
         private Correo correo;
         private String nombreRecibe;
         private String dniRecibe;
+        private decimal costo;
 
         public DateTime FechaSalida { get => fechaSalida; set => fechaSalida = value; }
         public DateTime FechaLlegada { get => fechaLlegada; set => fechaLlegada = value; }
-        public MetodoEnvio Forma { get => forma; set => forma = value; }
+        internal MetodoEnvio Forma { get => forma; set => forma = value; }
         public Domicilio Domicilio { get => domicilio; set => domicilio = value; }
         public Correo Correo { get => correo; set => correo = value; }
         public String NombreRecibe { get => nombreRecibe; set => nombreRecibe = value; }
         public String DniRecibe { get => dniRecibe; set => dniRecibe = value; }
+        public decimal Costo { get => costo; set => costo = value; }
 
         public void NuevoEnvio()
         {
@@ -49,9 +51,51 @@ namespace TP_Integrador___Team_4
             dniRecibe = Console.ReadLine();
         }
 
+        public void PromocionesEnvio()
+        {
+            Console.WriteLine("\t---PROMOCIONES---\n");
+            Console.WriteLine("Compras mayores a $5000, el envío es gratuito a sucursales de tu provincia.");
+            Console.WriteLine("Compras mayores a $10000, el envío es gratuito a todo el país.");
+        }
+
+        public decimal CalcularCostoEnvio(decimal total, string provinciaCliente)
+        {
+            decimal costoEnvioDomicilio = 450.0M;
+            decimal costoEnvioCorreo = 250.0M;
+
+            if (forma == MetodoEnvio.Domicilio)
+            {
+                if (total >= 5000 || total >= 10000)
+                {
+                    costo = 0M;
+                }
+
+                else
+                {
+                    costo = costoEnvioDomicilio;
+                }
+            }
+
+            else
+            {
+                if (total >= 10000 || (total >= 5000 && provinciaCliente == correo.Provincia))
+                {
+                    costo = 0M;
+                }
+
+                else
+                {
+                    costo = costoEnvioCorreo;
+                }
+            }
+
+            return costo;
+        }
 
         public void ToStringEnvio()
         {
+            
+
             Console.Clear();
             Console.WriteLine("\t---DETALLE DEL ENVIO---\n");
             Console.WriteLine("Fecha de salida: " + fechaSalida.ToString("g"));
@@ -71,6 +115,7 @@ namespace TP_Integrador___Team_4
 
             Console.WriteLine("\nNombre de quien recibe: " + nombreRecibe);
             Console.WriteLine("\nDni de quien recibe: " + dniRecibe);
+            Console.WriteLine("\nCosto del envio: $" + costo);
 
         }
     }

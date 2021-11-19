@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP_Integrador___Team_4
 {
-    class Pago
+    public class Pago
     {
         private decimal monto;
         private DateTime fecha;
@@ -15,7 +15,7 @@ namespace TP_Integrador___Team_4
 
         public decimal Monto { get => monto; set => monto = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
-        public MetodoPago Metodo { get => metodo; set => metodo = value; }
+        internal MetodoPago Metodo { get => metodo; set => metodo = value; }
         public Tarjeta Tarjetas { get => tarjetas; set => tarjetas = value; }
         public int CodigoPagoEfectivo { get => codigoPagoEfectivo; set => codigoPagoEfectivo = value; }
         public List<Cuota> Cuotas { get => cuotas; set => cuotas = value; }
@@ -25,13 +25,15 @@ namespace TP_Integrador___Team_4
             this.monto = monto;
             this.fecha = fecha;
             this.tarjetas = tarjetas;
-            this.codigoPagoEfectivo = new Random().Next(0,999999999);
+            this.codigoPagoEfectivo = new Random().Next(1,999999999);
             this.cuotas = new List<Cuota>();
         }
 
-        public void PagoEnEfectivo()
+        public int PagoEnEfectivo()
         {
             metodo = MetodoPago.Efectivo;
+            codigoPagoEfectivo = new Random().Next(1, 999999999);
+            return codigoPagoEfectivo;
         }
 
         public void PagoTarjetaDebito()

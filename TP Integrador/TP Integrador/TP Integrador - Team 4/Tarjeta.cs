@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP_Integrador___Team_4
 {
-    class Tarjeta
+    public class Tarjeta
     {
         private String numero;
         private String titular;
@@ -23,7 +23,7 @@ namespace TP_Integrador___Team_4
         public DateTime Vencimiento { get => vencimiento; set => vencimiento = value; }
         public int CodSeguridad { get => codSeguridad; set => codSeguridad = value; }
         public Cliente Clientes { get => clientes; set => clientes = value; }
-        public TipoTarjeta Tipo { get => tipo; set => tipo = value; }
+        internal TipoTarjeta Tipo { get => tipo; set => tipo = value; }
         public List<Pago> Pagos { get => pagos; set => pagos = value; }
 
         public Tarjeta(Cliente clientes)
@@ -31,7 +31,7 @@ namespace TP_Integrador___Team_4
             this.clientes = clientes;
         }
 
-        public Tarjeta(string numero, string titular, int dniTitular, string banco, DateTime vencimiento, int codSeguridad, TipoTarjeta tipo, Cliente cliente)
+        internal Tarjeta(string numero, string titular, int dniTitular, string banco, DateTime vencimiento, int codSeguridad, TipoTarjeta tipo, Cliente cliente)
         {
             Numero = numero;
             Titular = titular;
